@@ -25,6 +25,10 @@ public class Driver{
 		*/
 		print(g);
 
+		DFS dfs = new DFS(g);
+		println("Running DFS of g...");
+		dfs.search();
+		println("Done");
 		/*
 		Graph g
 		{1}-----------{2}
