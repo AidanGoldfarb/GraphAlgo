@@ -61,6 +61,8 @@ public class Graph{
 			while(li.hasNext()){
 				sb.append(li.next() + ",");
 			}
+			sb.trimToSize();
+			sb.deleteCharAt(sb.capacity()-1);
 			sb.append("\n\t  ");
 		}
 		sb.append("\n");
