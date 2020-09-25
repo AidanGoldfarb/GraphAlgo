@@ -1,7 +1,7 @@
 import java.util.*;
-public class DFS{
-	private Graph g;
-	public DFS(Graph g){
+public class ConnectionTest{
+	Graph g;
+	public ConnectionTest(Graph g){
 		this.g = g;
 	}
 
@@ -10,15 +10,25 @@ public class DFS{
 		2 = GRAY
 		3 = BLACK
 	*/
-	public void search(){
+	public boolean isConnected(){
 		setWhite();
+		LinkedList<Node> first = g.adj_list.get(0);
+		Node first_node = first.peek();
+
+		explore(first_node);
+
 		for(int i = 0; i<g.adj_list.size(); i++){
 			LinkedList<Node> cur = g.adj_list.get(i);
-			Node cur_node = cur.peek();
-			if(cur_node.color == 1){
-				explore(cur_node);
+			if(cur.size() == 1) return false;
+			ListIterator li = cur.listIterator(1);
+			while(li.hasNext()){
+				Node temp = (Node)li.next();
+				if(temp.color == 2){
+					return false;
+				}
 			}
 		}
+		return true;
 	}
 
 
@@ -79,7 +89,6 @@ public class DFS{
 		}
 	}
 
-
 	public LinkedList<Node> getBucket(int val){
 		for(int i = 0; i<g.adj_list.size(); i++){
 			LinkedList<Node> cur = g.adj_list.get(i);
@@ -87,6 +96,7 @@ public class DFS{
 				return cur;
 			}
 		}
+		println("returning null");
 		return null;
 	}
 

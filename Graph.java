@@ -61,10 +61,11 @@ public class Graph{
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0; i<adj_list.size(); i++){
 			LinkedList<Node> cur = adj_list.get(i);
-			sb.append("[" + cur.peek().value + "] -> ");
+			sb.append("[" + cur.peek().value + "]  -> ");
 			ListIterator li = cur.listIterator(1);
 			while(li.hasNext()){
-				sb.append(li.next() + ",");
+				Node n = (Node)li.next();
+				sb.append(n + "(" + n.color + ")" + ",");
 			}
 			sb.trimToSize();
 			sb.deleteCharAt(sb.capacity()-1);

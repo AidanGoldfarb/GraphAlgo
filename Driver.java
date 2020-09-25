@@ -23,25 +23,41 @@ public class Driver{
 		g.addEdge(4,5);
 		/*
 		*/
+
 		print(g);
 
-		DFS dfs = new DFS(g);
-		println("Running DFS of g...");
-		dfs.search();
-		println("Done");
+		depth_first_search(g);
+		
+		is_graph_connected(g);
+
 		/*
 		Graph g
-		{1}-----------{2}
-		 | \         / |  
-	     |  \       /  |	
+	    {1}-----------{2}
+	     | \         / |
+	     |  \       /  |
 	     |   \     /   |
 	     |     {5}     |
-		 |	 /     \   |
-		 |  /	    \  |
+	     |   /     \   |
+	     |  /       \  |
 	     | /         \ |
 	    {3}-----------{4}
 		
 		*/
+	}
+
+	public static void is_graph_connected(Graph g){
+		ConnectionTest ct = new ConnectionTest(g);
+		println("Testing if g is connected...");
+		println(ct.isConnected());
+		println("Done");
+	}
+
+	public static void depth_first_search(Graph g){
+		DFS dfs = new DFS(g);
+		println("Running DFS of g...");
+		dfs.search();
+		println("Done\n");
+
 	}
 
 	public static <T> void print(T str){
