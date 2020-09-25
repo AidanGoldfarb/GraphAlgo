@@ -24,6 +24,20 @@ public class Driver{
 		/*
 		*/
 		print(g);
+
+		/*
+		Graph g
+		{1}------------2}
+		 | \         / |  
+	     |  \       /  |	
+	     |   \     /   |
+	     |     {5}     |
+		 |	 /     \   |
+		 |  /	    \  |
+	     | /         \ |
+	    {3}-----------4}
+		
+		*/
 	}
 
 	public static <T> void print(T str){
