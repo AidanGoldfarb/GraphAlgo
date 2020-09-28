@@ -1,15 +1,17 @@
 import java.util.*;
 public class TwoColorTest{
 	private Graph g;
+	private HashSet<Integer> visited; 
 	public TwoColorTest(Graph g){
 		this.g = g;
+		visited = new HashSet<Integer>(); 
 	}
 
 	/*
 		0 = COLOR_1
 		1 = COLOR_2
 	*/
-	private HashSet<Integer> visited = new HashSet<Integer>();
+	
 	public boolean test(){
 		for(int i = 0; i<g.adj_list.size(); i++){
 			LinkedList<Node> cur = g.adj_list.get(i);

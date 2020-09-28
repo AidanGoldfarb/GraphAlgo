@@ -4,14 +4,18 @@ public class Driver{
 		Graph g1 = makeGraphOne();
 		Graph g2 = makeGraphTwo();
 		Graph g3 = makeGraphThree();
-		Graph test = g1;
+		Graph g4 = makeGraphFour();
+		Graph g5 = makeGraphFive();
+		Graph test = g5;
 		print(test);
 
 		//depth_first_search(test);
 		
 		//is_graph_connected(test);
 
-		is_graph_two_colorable(test);
+		//is_graph_two_colorable(test);
+
+		is_graph_acyclic(test);
 	}
 
 
@@ -91,7 +95,7 @@ public class Driver{
 	}
 
 	/*
-		Graph Two
+		Graph Three
 	    {1}-----------{2}
 	     | 	           |
 	     |             |
@@ -124,6 +128,49 @@ public class Driver{
 		return g;
 	}
 
+
+	public static Graph makeGraphFour(){
+		Graph g = new Graph();
+		/*
+		*/
+		g.addVertex(1);
+		g.addVertex(2);
+		g.addVertex(3);
+		g.addVertex(4);
+		g.addVertex(5);
+		/*
+		*/
+		g.addEdge(1,2);
+		g.addEdge(1,4);
+
+		g.addEdge(2,3);
+		g.addEdge(2,4);
+		g.addEdge(2,5);
+
+		g.addEdge(3,4);
+		g.addEdge(3,5);
+		/*
+		*/
+		return g;
+	}
+
+	public static Graph makeGraphFive(){
+		Graph g = new Graph();
+		/*
+		*/
+		g.addVertex(1);
+		g.addVertex(2);
+		g.addVertex(3);
+		g.addVertex(4);
+		/*
+		*/
+		g.addEdge(1,4);
+		g.addEdge(2,3);
+		/*
+		*/
+		return g;
+	}
+
 	public static void is_graph_two_colorable(Graph g){
 		TwoColorTest tct = new TwoColorTest(g);
 		println("Testing whether g is two colorable...\n");
@@ -143,7 +190,13 @@ public class Driver{
 		println("Running DFS of g...");
 		dfs.search();
 		println("Done\n");
+	}
 
+	public static void is_graph_acyclic(Graph g){
+		CycleTest ct = new CycleTest(g);
+		println("Running Cycle Test...");
+		ct.test();
+		println("Done\n");
 	}
 
 	public static <T> void print(T str){
