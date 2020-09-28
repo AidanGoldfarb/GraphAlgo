@@ -1,67 +1,73 @@
 import java.util.*;
-public class DFS{
+public class TwoColorTest{
 	private Graph g;
-	public DFS(Graph g){
+	public TwoColorTest(Graph g){
 		this.g = g;
 	}
 
 	/*
-		1 = WHITE
-		2 = GRAY
-		3 = BLACK
+		0 = COLOR_1
+		1 = COLOR_2
 	*/
-	public void search(){
-		setWhite();
+	private HashSet<Integer> visited = new HashSet<Integer>();
+	public boolean test(){
 		for(int i = 0; i<g.adj_list.size(); i++){
 			LinkedList<Node> cur = g.adj_list.get(i);
-			Node cur_node = cur.peek();
-			if(cur_node.color == 1){
-				explore(cur_node);
+			if(cur.size() > 1){
+				Node cur_node = cur.peek();
+				if(!visited.contains(cur_node.value)){
+					explore(cur_node, 0);
+				}
 			}
 		}
+		return true;
 	}
 
-
-	public void explore(Node n){
-		setGray(n);
+	public void explore(Node n, int c){
+		//setVisited(n);
+		visited.add(n.value);
+		setColor(n,c);
 		LinkedList<Node> bucket = getBucket(n.value);
-		if(bucket == null) return;
-
 		ListIterator li = bucket.listIterator(1);
 		while(li.hasNext()){
 			Node v = (Node)li.next();
-			if(v.color == 1){
+			if(!visited.contains(v.value)){
 				v.parent = n;
-				explore(v);
+				explore(v, 1-c);
 			}
-		}
-		//n.setColor(3);
-		setBlack(n);
-	}
-
-	public void setGray(Node n){
-		n.setColor(2);
-		for(int i = 0; i<g.adj_list.size(); i++){
-			LinkedList<Node> cur = g.adj_list.get(i);
-			ListIterator li = cur.listIterator(1);
-			while(li.hasNext()){
-				Node temp = (Node)li.next();
-				if(temp.value == n.value){
-					temp.setColor(2);
+			else{
+				if(v.color == c){
+					println("\nNOT COLORABLE");
+					System.exit(0);
 				}
 			}
 		}
 	}
 
-	public void setBlack(Node n){
-		n.setColor(3);
+
+	public void setColor(Node n, int c){
+		n.setColor(c);
 		for(int i = 0; i<g.adj_list.size(); i++){
 			LinkedList<Node> cur = g.adj_list.get(i);
 			ListIterator li = cur.listIterator(1);
 			while(li.hasNext()){
 				Node temp = (Node)li.next();
 				if(temp.value == n.value){
-					temp.setColor(3);
+					temp.setColor(c);
+				}
+			}
+		}
+	}
+
+	public void setVisited(Node n){
+		n.visited = true;
+		for(int i = 0; i<g.adj_list.size(); i++){
+			LinkedList<Node> cur = g.adj_list.get(i);
+			ListIterator li = cur.listIterator(1);
+			while(li.hasNext()){
+				Node temp = (Node)li.next();
+				if(temp.value == n.value){
+					temp.visited = true;
 				}
 			}
 		}

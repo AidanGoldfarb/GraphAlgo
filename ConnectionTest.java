@@ -40,8 +40,7 @@ public class ConnectionTest{
 		ListIterator li = bucket.listIterator(1);
 		while(li.hasNext()){
 			Node v = (Node)li.next();
-			int color = v.color;
-			if(color == 1){
+			if(v.color == 1){
 				v.parent = n;
 				explore(v);
 			}
