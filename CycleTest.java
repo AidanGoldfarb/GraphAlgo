@@ -33,7 +33,7 @@ public class CycleTest{
 		ListIterator li = neighbors.listIterator(1);
 		while(li.hasNext()){
 			Node u = (Node)li.next();
-			if( (status.get(u.value) == 1) && (u.value == v.parent.value) ){
+			if( (status.get(u.value) == 1) && (u.value != v.parent.value) ){
 				println("Cycle found\nDone");
 				System.exit(0);
 			}

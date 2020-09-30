@@ -6,7 +6,7 @@ public class Driver{
 		Graph g3 = makeGraphThree();
 		Graph g4 = makeGraphFour();
 		Graph g5 = makeGraphFive();
-		Graph test = g5;
+		Graph test = g1;
 		print(test);
 
 		//depth_first_search(test);
