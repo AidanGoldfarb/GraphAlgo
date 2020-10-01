@@ -1,5 +1,5 @@
 # Graph Algorithms
-Implementation of a Graph in java, as well as some algorithms. Currently all graphs are undirected
+Implementation of a Graph in java, as well as some algorithms.
 
 ### Algorithms
 - DFS
@@ -10,3 +10,5 @@ Implementation of a Graph in java, as well as some algorithms. Currently all gra
   - Tests whether a graph can be legally two colored
 - Cycle Test
   - Detects if any cycles are present
+- Topological Sort
+  - Topologically sorts the DAG
