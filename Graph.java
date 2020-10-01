@@ -14,6 +14,22 @@ public class Graph{
 		adj_list = new ArrayList<LinkedList<Node>>();
 	}
 
+	//remove node from graph, including associated edges
+	public void remove(Node n){
+		int val = n.value;
+		V--;
+		vertice_list.remove(n);
+		for(int i = 0; i<adj_list.size(); i++){
+			LinkedList<Node> cur = adj_list.get(i);
+			if(cur.peek().value == val){
+				adj_list.remove(cur);
+			}
+			else{
+				cur.remove(n);
+			}
+		}
+	}
+
 	//not safe atm
 	public void addVertex(int nv){
 		V++;
@@ -50,6 +66,30 @@ public class Graph{
 		adj_list.get(y_index).add(x);
 	}
 
+	//edge x -> y
+	public void addDirectedEdge(int xv, int yv){
+		Node x = new Node(xv);
+		Node y = new Node(yv);
+		E++;
+		Pair edge = new Pair(xv,yv);
+		edge_list.add(edge);
+		int x_index = -1;
+		int y_index = -1;
+		for(int i = 0; i<adj_list.size(); i++){
+			LinkedList<Node> element = adj_list.get(i);
+			if(xv == element.peek().value){
+				x_index = i;
+			}
+			if(yv == element.peek().value){
+				y_index = i;
+			}
+			if(x_index != -1 && y_index != -1) break;
+		}
+		if(x_index == -1 || y_index == -1) return;
+
+		adj_list.get(x_index).add(y);
+	}
+
 	@Override
 	public String toString(){
 		return "Vertices: " + vertice_list + " (" +  V + ")" + 
@@ -81,4 +121,15 @@ public class Graph{
 	public static <T> void println(T str){
 		System.out.println(str);
 	}
+
+	//is n in list
+	// public boolean isPresent(Node n, LinkedList<Node> list){
+	// 	ListIterator li = list.listIterator();
+	// 	while(li.hasNext()){
+	// 		if(li.next().value == n.value){
+	// 			return true;
+	// 		}
+	// 	}
+	// 	return false;
+	// }
 }

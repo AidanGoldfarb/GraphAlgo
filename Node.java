@@ -1,4 +1,4 @@
-public class Node{
+public class Node implements Comparable<Node>{
 	int value;
 	int color;
 	Node parent;
@@ -19,4 +19,9 @@ public class Node{
 	public String toString(){
 		return value+"";
 	}
+
+	@Override
+	public int compareTo(Node other) {
+    	return Integer.compare(this.value, other.value);
+}
 }
