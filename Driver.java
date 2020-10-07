@@ -2,15 +2,15 @@ import java.util.*;
 public class Driver{
 	public static void main(String [] args){
 		
-		Graph dg1 = makeGraphOne();
-		Graph dg2 = makeGraphTwo();
-		Graph dg3 = makeGraphThree();
-		Graph dg4 = makeGraphFour();
-		Graph dg5 = makeGraphFive();
-		Graph ug1 = makeGraphSix();
-		Graph ug2 = makeGraphSeven();
-		Graph ug3 = makeGraphEight();
-		Graph test = ug2;
+		Graph ug1 = makeGraphOne();
+		Graph ug2 = makeGraphTwo();
+		Graph ug3 = makeGraphThree();
+		Graph ug4 = makeGraphFour();
+		Graph ug5 = makeGraphFive();
+		Graph dg1 = makeGraphSix();
+		Graph dg2 = makeGraphSeven();
+		Graph dg3 = makeGraphEight();
+		Graph test = dg2;
 		print(test);
 
 		//depth_first_search(test);
@@ -21,7 +21,9 @@ public class Driver{
 
 		//is_graph_acyclic(test);
 
-		println(toplogical_sort(test));
+		//println(toplogical_sort(test));
+
+		println(reverse(test));
 	}
 
 
@@ -304,6 +306,14 @@ public class Driver{
 		ArrayList<Node> res = ts.sort();
 		println("Done");
 		return res;
+	}
+
+	public static Graph reverse(Graph g){
+		GraphReverser gr = new GraphReverser(g);
+		println("Reversing g...");
+		Graph grev = gr.reverse();
+		println("Done");
+		return grev;
 	}
 
 	public static <T> void print(T str){
