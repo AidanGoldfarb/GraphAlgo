@@ -10,7 +10,8 @@ public class Driver{
 		Graph dg1 = makeGraphSix();
 		Graph dg2 = makeGraphSeven();
 		Graph dg3 = makeGraphEight();
-		Graph test = dg2;
+		Graph dg4 = makeGraphNine();
+		Graph test = dg4;
 		print(test);
 
 		//depth_first_search(test);
@@ -23,7 +24,9 @@ public class Driver{
 
 		//println(toplogical_sort(test));
 
-		println(reverse(test));
+		//println(reverse(test));
+
+		is_graph_strongly_connected(test);
 	}
 
 
@@ -180,7 +183,7 @@ public class Driver{
 	}
 
 	/*
-		Graph Three
+		Graph Six
 	    {1}<----------{2}
 	     | 	           ^
 	     |             |
@@ -272,6 +275,40 @@ public class Driver{
 		return g;
 	}
 
+		/*
+		Graph Nine
+	   4 nodes strongly connected
+		
+		*/
+	public static Graph makeGraphNine(){
+		Graph g = new Graph();
+		/*
+		*/
+		g.addVertex(1);
+		g.addVertex(2);
+		g.addVertex(3);
+		g.addVertex(4);
+		/*
+		*/
+		g.addDirectedEdge(1,2);
+		g.addDirectedEdge(1,3);
+		g.addDirectedEdge(1,4);
+
+		g.addDirectedEdge(2,1);
+		g.addDirectedEdge(2,3);
+		g.addDirectedEdge(2,4);
+
+		g.addDirectedEdge(3,1);
+		g.addDirectedEdge(3,2);
+		g.addDirectedEdge(3,4);
+
+		g.addDirectedEdge(4,1);
+		g.addDirectedEdge(4,2);
+		g.addDirectedEdge(4,3);
+		
+		return g;
+	}
+
 	public static void is_graph_two_colorable(Graph g){
 		TwoColorTest tct = new TwoColorTest(g);
 		println("Testing whether g is two colorable...\n");
@@ -314,6 +351,11 @@ public class Driver{
 		Graph grev = gr.reverse();
 		println("Done");
 		return grev;
+	}
+
+	public static void is_graph_strongly_connected(Graph g){
+		StrongConnectionTest sct = new StrongConnectionTest(g);
+		println(sct.test());
 	}
 
 	public static <T> void print(T str){
