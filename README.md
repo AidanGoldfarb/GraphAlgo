@@ -14,3 +14,5 @@ Implementation of a Graph in java, as well as some algorithms.
   - Topologically sorts the DAG
 - Graph Reverser
   - Reverses a directed graph
+- Strong Connection Test
+  - Tests whether a graph is strongly connected
