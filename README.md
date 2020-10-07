@@ -12,3 +12,5 @@ Implementation of a Graph in java, as well as some algorithms.
   - Detects if any cycles are present
 - Topological Sort
   - Topologically sorts the DAG
+- Graph Reverser
+  - Reverses a directed graph
