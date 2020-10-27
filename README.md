@@ -16,3 +16,5 @@ Implementation of a Graph in java, as well as some algorithms.
   - Reverses a directed graph
 - Strong Connection Test
   - Tests whether a graph is strongly connected
+- Dijkstra's Algorithm
+  - Returns shortest path between a given source node and all other nodes in graph
