@@ -11,7 +11,8 @@ public class Driver{
 		Graph dg2 = makeGraphSeven();
 		Graph dg3 = makeGraphEight();
 		Graph dg4 = makeGraphNine();
-		Graph test = dg4;
+		Graph dg5 = makeGraphTen();
+		Graph test = dg5;
 		print(test);
 
 		//depth_first_search(test);
@@ -26,7 +27,9 @@ public class Driver{
 
 		//println(reverse(test));
 
-		is_graph_strongly_connected(test);
+		//is_graph_strongly_connected(test);
+
+		println(Arrays.toString(DijkstraShortestPaths(test)));
 	}
 
 
@@ -309,6 +312,40 @@ public class Driver{
 		return g;
 	}
 
+	/*
+		Graph Ten
+	   4 nodes strongly connected with weights
+		
+		*/
+	public static Graph makeGraphTen(){
+		Graph g = new Graph();
+		/*
+		*/
+		g.addVertex(1);
+		g.addVertex(2);
+		g.addVertex(3);
+		g.addVertex(4);
+		/*
+		*/
+		g.addDirectedWeightedEdge(1,2,1);
+		g.addDirectedWeightedEdge(1,3,2);
+		g.addDirectedWeightedEdge(1,4,3);
+
+		g.addDirectedWeightedEdge(2,1,4);
+		g.addDirectedWeightedEdge(2,3,5);
+		g.addDirectedWeightedEdge(2,4,6);
+
+		g.addDirectedWeightedEdge(3,1,7);
+		g.addDirectedWeightedEdge(3,2,8);
+		g.addDirectedWeightedEdge(3,4,9);
+
+		g.addDirectedWeightedEdge(4,1,10);
+		g.addDirectedWeightedEdge(4,2,11);
+		g.addDirectedWeightedEdge(4,3,12);
+		
+		return g;
+	}
+
 	public static void is_graph_two_colorable(Graph g){
 		TwoColorTest tct = new TwoColorTest(g);
 		println("Testing whether g is two colorable...\n");
@@ -356,6 +393,13 @@ public class Driver{
 	public static void is_graph_strongly_connected(Graph g){
 		StrongConnectionTest sct = new StrongConnectionTest(g);
 		println(sct.test());
+	}
+
+	public static int [] DijkstraShortestPaths(Graph g){
+		Node source = g.vertice_list.get(0);
+		println("SOURCE: " + source);
+		Dijkstra d = new Dijkstra(g,source);
+		return d.sortestPaths();
 	}
 
 	public static <T> void print(T str){

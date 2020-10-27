@@ -3,11 +3,13 @@ public class Node implements Comparable<Node>{
 	int color;
 	Node parent;
 	boolean visited;
+	int distance;
 
 	public Node(int v){
-		value = v;
-		color = -1;
-		visited = false;
+		this.value = v;
+		this.color = -1;
+		this.visited = false;
+		this.distance = 0;
 		//parent = new Node(-1);
 	}
 
@@ -23,5 +25,5 @@ public class Node implements Comparable<Node>{
 	@Override
 	public int compareTo(Node other) {
     	return Integer.compare(this.value, other.value);
-}
+	}
 }

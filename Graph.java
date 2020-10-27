@@ -90,6 +90,30 @@ public class Graph{
 		adj_list.get(x_index).add(y);
 	}
 
+	//edge x -> y
+	public void addDirectedWeightedEdge(int xv, int yv, int weight){
+		Node x = new Node(xv);
+		Node y = new Node(yv);
+		E++;
+		Pair edge = new Pair(xv,yv,weight);
+		edge_list.add(edge);
+		int x_index = -1;
+		int y_index = -1;
+		for(int i = 0; i<adj_list.size(); i++){
+			LinkedList<Node> element = adj_list.get(i);
+			if(xv == element.peek().value){
+				x_index = i;
+			}
+			if(yv == element.peek().value){
+				y_index = i;
+			}
+			if(x_index != -1 && y_index != -1) break;
+		}
+		if(x_index == -1 || y_index == -1) return;
+
+		adj_list.get(x_index).add(y);
+	}
+
 	@Override
 	public String toString(){
 		return "Vertices: " + vertice_list + " (" +  V + ")" + 
