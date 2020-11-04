@@ -12,7 +12,7 @@ public class Driver{
 		Graph dg3 = makeGraphEight();
 		Graph dg4 = makeGraphNine();
 		Graph dg5 = makeGraphTen();
-		Graph test = dg5;
+		Graph test = ug2;
 		print(test);
 
 		//depth_first_search(test);
@@ -29,7 +29,9 @@ public class Driver{
 
 		//is_graph_strongly_connected(test);
 
-		println(Arrays.toString(DijkstraShortestPaths(test)));
+		//println(Arrays.toString(DijkstraShortestPaths(test)));
+
+		println(all_cycles(test));
 	}
 
 
@@ -395,11 +397,17 @@ public class Driver{
 		println(sct.test());
 	}
 
-	public static int [] DijkstraShortestPaths(Graph g){
+	public static int [] dijkstraShortestPaths(Graph g){
 		Node source = g.vertice_list.get(0);
 		println("SOURCE: " + source);
 		Dijkstra d = new Dijkstra(g,source);
 		return d.sortestPaths();
+	}
+
+	public static ArrayList<ArrayList<Pair>> all_cycles(Graph g){
+		CyclePrinter cp = new CyclePrinter(g);
+		cp.test();
+		return cp.list;
 	}
 
 	public static <T> void print(T str){
